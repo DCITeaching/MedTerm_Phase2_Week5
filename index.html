@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 5 — Skeletal System | DC International Teaching Hospital</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1B3A6B;--primary-d:#0D1F3C;--primary-l:#EBF0F8;--primary-m:#2E6DA4;--gold:#C49A2A;--gold-l:#FDF8EC;--navy:#1A1A2E;--cream:#FAF7F2;--dark:#1A1A1A;--gray:#595959;--lgray:#F0EEEB;--white:#FFFFFF;--correct:#1A5C2E;--wrong:#8B1A1A;--shadow:0 4px 24px rgba(0,0,0,0.09);--shadow-lg:0 8px 40px rgba(0,0,0,0.14);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);font-size:16px;line-height:1.7;}
+.site-header{background:var(--navy);color:white;position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,0.3);}
+.header-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.header-title{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--gold);}
+.header-sub{font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:2px;}
+.week-badge{background:var(--primary);color:white;font-size:0.7rem;font-weight:700;padding:5px 12px;border-radius:20px;letter-spacing:0.05em;}
+.lesson-nav{background:rgba(255,255,255,0.06);border-top:1px solid rgba(255,255,255,0.08);display:flex;overflow-x:auto;}
+.nav-btn{padding:10px 16px;background:none;border:none;color:rgba(255,255,255,0.5);font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;cursor:pointer;transition:all .2s;border-bottom:3px solid transparent;white-space:nowrap;}
+.nav-btn:hover{color:rgba(255,255,255,0.85);}
+.nav-btn.active{color:var(--gold);border-bottom-color:var(--gold);background:rgba(196,154,42,0.08);}
+.main{max-width:1100px;margin:0 auto;padding:36px 24px 80px;}
+.panel{display:none;animation:fadeIn .25s ease;}
+.panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+.lesson-hero{background:var(--primary-d);border-radius:16px;padding:40px;color:white;margin-bottom:32px;position:relative;overflow:hidden;}
+.lesson-hero::after{content:'';position:absolute;right:-40px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:rgba(196,154,42,0.08);}
+.hero-eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.lesson-hero h1{font-family:'DM Serif Display',serif;font-size:2rem;line-height:1.15;margin-bottom:12px;}
+.lesson-hero p{color:rgba(255,255,255,0.7);font-size:0.95rem;max-width:560px;}
+.hero-objectives{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.obj-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;}
+.obj-label{font-size:0.65rem;font-weight:700;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
+.obj-text{font-size:0.82rem;color:rgba(255,255,255,0.8);line-height:1.5;}
+
+.section-title{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--dark);margin-bottom:6px;}
+.section-sub{font-size:0.875rem;color:var(--gray);margin-bottom:28px;}
+.section-divider{height:3px;background:linear-gradient(90deg,var(--primary),var(--gold));border-radius:2px;margin-bottom:28px;}
+
+.reading-article{background:white;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:28px;}
+.article-chapter{background:var(--primary);color:white;padding:20px 32px;}
+.article-chapter .ch-label{font-size:0.68rem;font-weight:700;letter-spacing:.15em;color:rgba(255,255,255,0.6);text-transform:uppercase;margin-bottom:4px;}
+.article-chapter h2{font-family:'DM Serif Display',serif;font-size:1.5rem;}
+.article-body{padding:32px;}
+.article-body p{font-size:0.95rem;color:var(--dark);margin-bottom:18px;line-height:1.75;}
+.article-body h3{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--primary);margin:28px 0 12px;}
+.article-body ul{margin:0 0 18px 24px;}
+.article-body ul li{font-size:0.93rem;color:var(--dark);margin-bottom:8px;line-height:1.6;}
+.article-body .callout{background:var(--primary-l);border-left:4px solid var(--primary);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0;font-size:0.9rem;color:var(--primary-d);}
+.article-body .callout strong{display:block;margin-bottom:4px;font-size:0.8rem;letter-spacing:.08em;text-transform:uppercase;}
+.article-body .clinical-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.875rem;}
+.article-body .clinical-table th{background:var(--primary);color:white;padding:10px 14px;text-align:left;font-weight:600;}
+.article-body .clinical-table td{padding:10px 14px;border-bottom:1px solid var(--lgray);}
+.article-body .clinical-table tr:nth-child(even) td{background:var(--primary-l);}
+
+.ht{color:var(--primary);font-weight:600;border-bottom:2px dotted var(--primary);cursor:help;position:relative;display:inline;}
+.ht-tip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--navy);color:white;border-radius:10px;padding:12px 16px;width:260px;font-size:0.8rem;line-height:1.5;z-index:999;box-shadow:var(--shadow-lg);pointer-events:none;}
+.ht-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--navy);}
+.ht-tip .tip-root{color:var(--gold);font-family:'DM Mono',monospace;font-size:0.75rem;display:block;margin-bottom:4px;}
+.ht:hover .ht-tip{display:block;}
+
+.cfu-block{background:white;border-radius:14px;padding:28px;box-shadow:var(--shadow);margin-bottom:20px;border-left:4px solid var(--primary);}
+.cfu-label{font-size:0.68rem;font-weight:700;letter-spacing:.15em;color:var(--primary);text-transform:uppercase;margin-bottom:8px;}
+.cfu-question{font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:18px;line-height:1.4;}
+.cfu-choices{display:flex;flex-direction:column;gap:8px;}
+.cfu-choice{padding:11px 16px;border-radius:8px;border:2px solid var(--lgray);background:white;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.9rem;text-align:left;transition:all .18s;color:var(--dark);}
+.cfu-choice:hover:not(:disabled){border-color:var(--primary);background:var(--primary-l);}
+.cfu-choice.correct{background:#e8f5e9;border-color:var(--correct);color:var(--correct);font-weight:600;}
+.cfu-choice.wrong{background:#ffebee;border-color:var(--wrong);color:var(--wrong);}
+.cfu-choice.dimmed{opacity:.4;}
+.cfu-choice:disabled{cursor:default;}
+.cfu-feedback{display:none;margin-top:14px;padding:14px 16px;border-radius:8px;font-size:0.875rem;line-height:1.55;}
+.cfu-feedback.show{display:block;}
+.cfu-feedback.ok{background:#e8f5e9;color:#1b5e20;border-left:3px solid var(--correct);}
+.cfu-feedback.no{background:#ffebee;color:#7f1d1d;border-left:3px solid var(--wrong);}
+.cfu-retry{margin-top:10px;padding:6px 14px;border-radius:6px;border:none;background:var(--lgray);color:var(--gray);font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:600;cursor:pointer;}
+.cfu-score-bar{background:white;border-radius:12px;padding:16px 24px;margin-bottom:24px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.cfu-score-num{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--navy);}
+.cfu-score-lbl{font-size:0.8rem;color:var(--gray);}
+
+.game-area{background:white;border-radius:16px;padding:32px;box-shadow:var(--shadow);margin-bottom:28px;}
+.game-tabs{display:flex;gap:8px;margin-bottom:24px;}
+.game-tab{padding:8px 18px;border-radius:24px;border:2px solid var(--lgray);background:white;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;color:var(--gray);transition:all .18s;}
+.game-tab.active{background:var(--primary);color:white;border-color:var(--primary);}
+.game-panel{display:none;}
+.game-panel.active{display:block;}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+.match-col h4{font-size:0.75rem;font-weight:700;letter-spacing:.1em;color:var(--gray);text-transform:uppercase;margin-bottom:10px;}
+.match-item{padding:12px 16px;border-radius:8px;border:2px solid var(--lgray);background:white;cursor:pointer;font-size:0.875rem;transition:all .18s;line-height:1.4;}
+.match-item:hover{border-color:var(--primary);}
+.match-item.selected{background:var(--primary);color:white;border-color:var(--primary);}
+.match-item.matched{background:#e8f5e9;border-color:var(--correct);color:var(--correct);cursor:default;font-weight:600;}
+.match-item.wrong-flash{background:#ffebee;border-color:var(--wrong);animation:shake .4s ease;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+.match-score{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:16px;}
+.fill-item{background:var(--lgray);border-radius:10px;padding:18px 20px;margin-bottom:12px;}
+.fill-sentence{font-size:0.95rem;color:var(--dark);margin-bottom:10px;line-height:1.6;}
+.fill-input{padding:8px 12px;border-radius:6px;border:2px solid var(--lgray);font-family:'DM Sans',sans-serif;font-size:0.9rem;width:220px;transition:border-color .18s;}
+.fill-input:focus{outline:none;border-color:var(--primary);}
+.fill-input.correct-in{border-color:var(--correct);background:#e8f5e9;color:var(--correct);}
+.fill-input.wrong-in{border-color:var(--wrong);background:#ffebee;color:var(--wrong);}
+.fill-check{padding:8px 18px;border-radius:6px;border:none;background:var(--primary);color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;margin-left:8px;}
+.fill-hint{font-size:0.8rem;color:var(--gray);margin-top:6px;}
+.decode-item{background:white;border:2px solid var(--lgray);border-radius:12px;padding:20px 24px;margin-bottom:14px;}
+.decode-term{font-family:'DM Serif Display',serif;font-size:1.5rem;font-style:italic;color:var(--primary);margin-bottom:8px;}
+.decode-parts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.decode-part{padding:4px 12px;border-radius:20px;font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:500;}
+.dp-prefix{background:#e3f2fd;color:#0d47a1;}
+.dp-root{background:var(--primary-l);color:var(--primary);}
+.dp-suffix{background:#f3e5f5;color:#6a1b9a;}
+.decode-reveal{padding:8px 16px;border-radius:6px;border:2px solid var(--primary);background:white;color:var(--primary);font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .18s;}
+.decode-reveal:hover{background:var(--primary);color:white;}
+.decode-answer{display:none;margin-top:12px;padding:12px 16px;background:var(--primary-l);border-radius:8px;font-size:0.875rem;color:var(--primary-d);line-height:1.55;}
+.decode-answer.show{display:block;}
+
+.resources-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;}
+.resource-card{background:white;border-radius:14px;padding:22px;box-shadow:var(--shadow);transition:all .2s;text-decoration:none;display:block;border-top:4px solid var(--primary);}
+.resource-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.rc-type{font-size:0.65rem;font-weight:700;letter-spacing:.12em;color:var(--primary);text-transform:uppercase;margin-bottom:8px;}
+.rc-title{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--dark);margin-bottom:6px;line-height:1.3;}
+.rc-desc{font-size:0.82rem;color:var(--gray);line-height:1.5;}
+.rc-link{font-size:0.78rem;color:var(--primary);font-weight:600;margin-top:10px;display:block;}
+
+.scenario-card{background:var(--navy);border-radius:16px;padding:32px;color:white;margin-bottom:24px;}
+.scenario-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.scenario-card h2{font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:14px;}
+.scenario-card p{font-size:0.93rem;color:rgba(255,255,255,0.8);line-height:1.7;}
+.scenario-card .vitals{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px;}
+.vital-box{background:rgba(255,255,255,0.07);border-radius:8px;padding:12px;text-align:center;}
+.vital-val{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--gold);}
+.vital-lbl{font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:2px;}
+.task-card{background:white;border-radius:14px;padding:26px;box-shadow:var(--shadow);margin-bottom:16px;}
+.task-num{font-size:0.68rem;font-weight:700;letter-spacing:.15em;color:var(--primary);text-transform:uppercase;margin-bottom:8px;}
+.task-q{font-size:0.98rem;font-weight:600;color:var(--dark);margin-bottom:14px;line-height:1.4;}
+.task-textarea{width:100%;min-height:80px;padding:12px 14px;border-radius:8px;border:2px solid var(--lgray);font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--dark);background:var(--cream);resize:vertical;transition:border-color .18s;}
+.task-textarea:focus{outline:none;border-color:var(--primary);background:white;}
+.task-hint-btn{padding:6px 14px;border-radius:6px;border:1.5px solid var(--primary);background:white;color:var(--primary);font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:600;cursor:pointer;margin-top:10px;}
+.task-hint{display:none;margin-top:10px;padding:12px 16px;background:var(--primary-l);border-radius:8px;font-size:0.85rem;color:var(--primary-d);line-height:1.55;}
+.task-hint.show{display:block;}
+@media(max-width:700px){.hero-objectives{grid-template-columns:1fr;}.resources-grid{grid-template-columns:1fr;}.match-grid{grid-template-columns:1fr;}.scenario-card .vitals{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div>
+      <div class="header-title">DC International Teaching Hospital</div>
+      <div class="header-sub">Health Science II · Phase 2: Trauma & Structure</div>
+    </div>
+    <div class="week-badge">WEEK 5 · SKELETAL SYSTEM</div>
+  </div>
+  <nav class="lesson-nav">
+    <button class="nav-btn active" onclick="showPanel('reading')">📖 Reading</button>
+    <button class="nav-btn" onclick="showPanel('cfu')">✅ Check for Understanding</button>
+    <button class="nav-btn" onclick="showPanel('vocab')">🎮 Vocabulary Games</button>
+    <button class="nav-btn" onclick="showPanel('resources')">🔗 Resources</button>
+    <button class="nav-btn" onclick="showPanel('apply')">🏥 Apply It</button>
+  </nav>
+</header>
+
+<main class="main">
+
+<!-- READING -->
+<div id="reading" class="panel active">
+  <div class="lesson-hero">
+    <div class="hero-eyebrow">Lessons 13–15 · Grand Rounds + X-Ray Lab + M&M Conference</div>
+    <h1>The Skeletal System:<br>Reading Bones, Classifying Fractures</h1>
+    <p>Orthopedic injuries are among the most common ER presentations. This reading covers bone anatomy, fracture classification, CMS assessment, and the clinical vocabulary you need to read radiology reports and document orthopedic encounters with precision.</p>
+    <div class="hero-objectives">
+      <div class="obj-card"><div class="obj-label">What</div><div class="obj-text">Identify major bones, classify 6 fracture types from X-ray, perform CMS checks, document ORIF indication</div></div>
+      <div class="obj-card"><div class="obj-label">Why</div><div class="obj-text">Interns must read radiology reports, communicate with orthopedic consultants, and document fractures precisely — errors create patient safety risks</div></div>
+      <div class="obj-card"><div class="obj-label">How Assessed</div><div class="obj-text">EHR SOAP note with fracture type + CMS · GimKit W5 review · Boards Section A (fracture vignettes) + Section B (X-ray ID)</div></div>
+    </div>
+  </div>
+
+  <div class="reading-article">
+    <div class="article-chapter"><div class="ch-label">Chapter 1 · Lesson 13</div><h2>Bone Anatomy: The Framework Beneath</h2></div>
+    <div class="article-body">
+      <p>Before you can classify a fracture, you need to understand the architecture of the bone that broke. The clinical terms you use in orthopedic documentation come directly from bone anatomy — and understanding the structure tells you why different fractures behave differently and require different interventions.</p>
+      <h3>The Five Critical Bone Structures</h3>
+      <p>The <span class="ht">periosteum<span class="ht-tip"><span class="tip-root">peri- (around) + oste/o (bone)</span>Tough fibrous membrane covering the outer surface of bone. Contains blood supply, nerve fibers, and osteoblasts for repair.</span></span> is the tough fibrous membrane that wraps the outer surface of every bone. It carries the blood supply and the osteoblasts (bone-forming cells) critical for fracture healing. When a fracture "strips" the periosteum, healing is more complex and often requires surgical intervention. In children, the periosteum is thicker and more flexible — which is why their bones bend before they fully break (greenstick pattern).</p>
+      <p>Beneath the periosteum is <span class="ht">cortical bone<span class="ht-tip"><span class="tip-root">cortic/o (outer layer/cortex)</span>Dense outer shell of compact bone. Provides structural strength. Makes up ~80% of total bone mass.</span></span>, also called compact bone — the dense outer shell that provides mechanical strength. When you see "cortical disruption" on a radiology report, that means there is a fracture. The <span class="ht">medullary canal<span class="ht-tip"><span class="tip-root">medull/o (middle/marrow)</span>Central hollow cavity running through the diaphysis. Contains yellow marrow in adults.</span></span> runs through the central shaft, containing bone marrow. In adults it holds yellow marrow (fat); in children and red marrow sites it produces blood cells.</p>
+      <p>Every long bone has two distinct regions: the <span class="ht">epiphysis<span class="ht-tip"><span class="tip-root">epi- (upon) + physis (growth)</span>Rounded ends of a long bone. Covered with articular cartilage. Growth plate (epiphyseal plate) is here in children.</span></span> at each end — covered with articular cartilage for joint function — and the <span class="ht">diaphysis<span class="ht-tip"><span class="tip-root">dia- (through) + physis</span>The shaft — the long middle portion of a long bone. Contains the medullary canal.</span></span>, the long shaft. In pediatric patients, fractures involving the epiphyseal plate (growth plate) are a priority concern because they can disrupt normal bone growth.</p>
+      <p>Lining the inner surface of the medullary canal is <span class="ht">cancellous bone<span class="ht-tip"><span class="tip-root">Latin: cancelli (lattice)</span>Spongy, porous inner bone at the epiphyses. Houses red marrow. Provides cushioning and flexibility.</span></span> — also called spongy or trabecular bone. This lattice structure is found at the bone ends and provides a shock-absorbing scaffold. <span class="ht">Osteoporosis<span class="ht-tip"><span class="tip-root">oste/o (bone) + por/o (pore) + -osis</span>Condition of decreased bone mineral density. DEXA T-score &lt; -2.5. High fracture risk from minimal trauma.</span></span> preferentially affects cancellous bone, which is why osteoporotic fractures occur at the vertebrae (compression), hip, and wrist — all high-cancellous-bone sites.</p>
+
+      <h3>Axial vs. Appendicular: Organizing the Skeleton</h3>
+      <p>The 206 bones of the adult skeleton are organized into two divisions. The <strong>axial skeleton</strong> (80 bones) forms the central axis: skull, vertebral column, ribs, and sternum. The <strong>appendicular skeleton</strong> (126 bones) includes the limbs and the girdles that connect them to the axial skeleton — the shoulder (pectoral) girdle and the pelvic girdle. Most ER fractures involve the appendicular skeleton; spinal fractures involve the axial skeleton.</p>
+
+      <div class="callout"><strong>Root Word Check</strong>oste/o = bone (osteology, osteoporosis, osteomyelitis). arthr/o = joint (arthritis, arthroscopy, intra-articular). chondr/o = cartilage (chondral, chondromalacia). cortic/o = outer layer (cortical bone). medull/o = marrow/middle (medullary canal). peri- = around (periosteum).</div>
+    </div>
+  </div>
+
+  <div class="reading-article">
+    <div class="article-chapter"><div class="ch-label">Chapter 2 · Lesson 14</div><h2>Fracture Classification: Six Patterns You Must Know</h2></div>
+    <div class="article-body">
+      <p>Fracture classification is not optional vocabulary — it directly determines treatment decisions. A greenstick fracture in a child is managed very differently from a comminuted fracture in an adult, and an open fracture requires immediate surgical intervention that a closed fracture does not. Your ability to identify these patterns from an X-ray description is a Board Exam core skill.</p>
+
+      <table class="clinical-table">
+        <thead><tr><th>Fracture Type</th><th>X-Ray Finding</th><th>Typical Mechanism</th><th>Key Clinical Note</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Greenstick</strong></td><td>Cortex disrupted ONE side only — bone bent but not fully broken</td><td>Bending force</td><td>Pediatric patients — flexible periosteum</td></tr>
+          <tr><td><strong>Transverse</strong></td><td>Horizontal break perpendicular to bone axis</td><td>Direct blunt force</td><td>Clean line; "nightstick fracture" of ulna</td></tr>
+          <tr><td><strong>Spiral</strong></td><td>Helical line wrapping around cortex</td><td>Torsion (twisting)</td><td>⚠ In children: possible non-accidental trauma</td></tr>
+          <tr><td><strong>Comminuted</strong></td><td>3 or more bone fragments</td><td>High-velocity / crush</td><td>Often requires ORIF; complex repair</td></tr>
+          <tr><td><strong>Compound (Open)</strong></td><td>Bone end visible through skin</td><td>Any — skin breached</td><td>Orthopedic emergency; IV abx immediately</td></tr>
+          <tr><td><strong>Compression</strong></td><td>Vertebral body wedge-shaped / shorter</td><td>Axial load</td><td>Common in osteoporosis; neurosurgery consult</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Fracture Descriptor Terms</h3>
+      <p>Beyond fracture type, you must document additional descriptors. A fracture is <span class="ht">displaced<span class="ht-tip"><span class="tip-root">dis- (apart) + placed</span>Fracture fragments are no longer aligned — bone segments are offset from each other.</span></span> when the fragments are no longer aligned (vs. non-displaced, where the fracture line is present but the bone maintains position). A fracture is <strong>open</strong> (compound) when bone breaks through skin — this immediately elevates infection risk because the skin barrier is breached, creating a direct pathway for bacteria to reach bone, causing <span class="ht">osteomyelitis<span class="ht-tip"><span class="tip-root">oste/o + myel/o (marrow) + -itis</span>Bacterial infection of bone and bone marrow. Serious complication of open fractures requiring prolonged IV antibiotics.</span></span>. A fracture is <strong>intra-articular</strong> when the fracture line extends into the joint space — this carries higher complication risk because articular cartilage is involved.</p>
+
+      <div class="callout"><strong>ORIF Indication</strong><span class="ht">ORIF<span class="ht-tip"><span class="tip-root">Open Reduction Internal Fixation</span>Surgery to realign bone (reduction) and hold fragments with hardware — plates, screws, intramedullary nails.</span></span> (Open Reduction Internal Fixation) is indicated when: displacement exceeds 2mm, fracture is intra-articular, fracture is open, or conservative management has failed. Document: <em>"ORIF of comminuted intra-articular distal radius fracture — consent obtained."</em></div>
+
+      <h3>Crepitus: Assess Once, Document, Move On</h3>
+      <p><span class="ht">Crepitus<span class="ht-tip"><span class="tip-root">Latin: crepitare (to crackle)</span>Grating or crackling sensation from fractured bone ends rubbing. Assess ONCE during initial eval — never reproduce intentionally.</span></span> is the grating sensation of bone ends moving against each other. It confirms fracture but causes significant pain and can worsen displacement. Clinical rule: assess it once during initial examination, document it, then immobilize immediately. Never intentionally reproduce crepitus in subsequent assessments.</p>
+    </div>
+  </div>
+
+  <div class="reading-article">
+    <div class="article-chapter"><div class="ch-label">Chapter 3 · Lesson 14 — Splinting Lab</div><h2>CMS Assessment: The Neurovascular Check That Protects Your Patient</h2></div>
+    <div class="article-body">
+      <p>Every extremity fracture that receives a splint or cast requires a <span class="ht">CMS assessment<span class="ht-tip"><span class="tip-root">Circulation, Motion, Sensation</span>Neurovascular check before and after splinting to detect distal complications — circulatory compromise or nerve damage.</span></span> both before and after the intervention. This is not optional documentation — it is a standard of care and a legal protection. A deteriorating CMS finding after splinting means the splint must be loosened or bivalved immediately.</p>
+
+      <h3>C — Circulation</h3>
+      <p>Assess capillary refill (should be less than 2 seconds — press the fingernail, release, count until pink returns), skin color (should match the uninjured side), and skin temperature (should be warm). Pale, cool skin with refill greater than 2 seconds = compromised circulation = emergency intervention required.</p>
+
+      <h3>M — Motion</h3>
+      <p>Ask the patient to wiggle their fingers or toes on the affected side. Can they perform active distal digit motion? Inability to move distally — with normal sensation — may indicate tendon or nerve injury distal to the fracture or splint. Inability plus abnormal sensation suggests vascular or nerve compromise.</p>
+
+      <h3>S — Sensation</h3>
+      <p>Apply light touch to the dorsal and palmar/plantar surfaces. Compare bilateral. Numbness or tingling (paresthesia) distal to a splint suggests nerve compression — loosen the splint immediately. Document as: <em>"Sensation: light touch intact dorsal and palmar surface right hand bilaterally. No paresthesia reported."</em></p>
+
+      <div class="callout"><strong>Documentation Standard</strong>Pre-splint CMS: "Circulation: cap refill 1.5 sec, digits warm and pink. Motion: all digits flex/extend actively. Sensation: light touch intact, no paresthesia." Post-splint CMS: repeat all three components. Any change = immediate intervention.</div>
+
+      <h3>FOOSH: The Most Common Fracture Mechanism in the ER</h3>
+      <p><span class="ht">FOOSH<span class="ht-tip"><span class="tip-root">Fall On Outstretched Hand</span>Classic mechanism for distal radius, scaphoid, and elbow fractures. Hand extended to catch fall.</span></span> — Fall On Outstretched Hand — is the single most common fracture mechanism in the ER, especially in children and older adults. When a patient falls and instinctively extends their hand to catch themselves, the impact force travels up through the wrist and forearm. Classic FOOSH injuries: distal radius fracture (most common), scaphoid fracture (watch for tenderness in the anatomical snuffbox), and radial head fracture.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CFU -->
+<div id="cfu" class="panel">
+  <div class="section-title">Check for Understanding</div>
+  <div class="section-sub">5 clinical questions in Board Exam format — fracture classification, CMS, and orthopedic terminology.</div>
+  <div class="section-divider"></div>
+  <div class="cfu-score-bar">
+    <div><div class="cfu-score-lbl">Score</div><div class="cfu-score-num" id="cfuScore">0 / 0</div></div>
+    <div><div class="cfu-score-lbl">Accuracy</div><div class="cfu-score-num" id="cfuAcc">—</div></div>
+    <button class="cfu-retry" onclick="resetAllCFU()" style="padding:9px 18px;">Reset All</button>
+  </div>
+  <div id="cfuContainer"></div>
+</div>
+
+<!-- VOCAB -->
+<div id="vocab" class="panel">
+  <div class="section-title">Vocabulary Games</div>
+  <div class="section-sub">Three modes to drill your 25 Week 5 terms — match, fill-in-the-blank, and root word decode.</div>
+  <div class="section-divider"></div>
+  <div class="game-area">
+    <div class="game-tabs">
+      <button class="game-tab active" onclick="showGame('match')">🔗 Term Match</button>
+      <button class="game-tab" onclick="showGame('fill')">✏️ Fill in the Blank</button>
+      <button class="game-tab" onclick="showGame('decode')">🔬 Root Decode</button>
+    </div>
+    <div id="match" class="game-panel active">
+      <div class="match-score">Matched: <span id="matchCount">0</span> / 8</div>
+      <div id="matchInstructions" style="font-size:0.85rem;color:var(--gray);margin-bottom:16px;">Click a term on the left, then its definition on the right.</div>
+      <div class="match-grid">
+        <div><h4>Terms</h4><div id="matchTerms"></div></div>
+        <div><h4>Definitions</h4><div id="matchDefs"></div></div>
+      </div>
+      <button onclick="initMatch()" style="padding:9px 20px;border-radius:8px;border:none;background:var(--primary);color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;margin-top:8px;">New Round 🔀</button>
+    </div>
+    <div id="fill" class="game-panel"><div id="fillItems"></div></div>
+    <div id="decode" class="game-panel">
+      <p style="font-size:0.875rem;color:var(--gray);margin-bottom:20px;">Study the word parts. Predict the meaning, then reveal to check.</p>
+      <div id="decodeItems"></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESOURCES -->
+<div id="resources" class="panel">
+  <div class="section-title">Resources & Further Learning</div>
+  <div class="section-sub">Radiology tools, career profiles, HOSA connections, and clinical references for Week 5.</div>
+  <div class="section-divider"></div>
+  <div class="resources-grid">
+    <a class="resource-card" href="https://radiopaedia.org/articles/fracture-types" target="_blank">
+      <div class="rc-type">🩻 Clinical Tool</div>
+      <div class="rc-title">Radiopaedia — Fracture Types</div>
+      <div class="rc-desc">Free radiology education platform used by medical students and residents worldwide. Real X-ray examples of every fracture type — greenstick, comminuted, spiral, compression, and more.</div>
+      <div class="rc-link">radiopaedia.org →</div>
+    </a>
+    <a class="resource-card" href="https://medlineplus.gov/fractures.html" target="_blank">
+      <div class="rc-type">📚 Reference</div>
+      <div class="rc-title">MedlinePlus — Fractures</div>
+      <div class="rc-desc">National Library of Medicine patient reference covering fracture types, diagnosis, treatment, and recovery. Reliable, government-reviewed content.</div>
+      <div class="rc-link">medlineplus.gov →</div>
+    </a>
+    <a class="resource-card" href="https://www.youtube.com/watch?v=P7bXCnJkBUI" target="_blank">
+      <div class="rc-type">🎥 Tutorial</div>
+      <div class="rc-title">Osmosis — Bone Anatomy (YouTube)</div>
+      <div class="rc-desc">Animated overview of bone structure — periosteum, compact bone, spongy bone, marrow cavity. 10-minute review that covers all Week 5 anatomy terms visually.</div>
+      <div class="rc-link">youtube.com →</div>
+    </a>
+    <a class="resource-card" href="https://www.youtube.com/watch?v=sTvvk2iJJqw" target="_blank">
+      <div class="rc-type">🎥 Lab Tutorial</div>
+      <div class="rc-title">How to Apply a Posterior Splint</div>
+      <div class="rc-desc">Step-by-step posterior splint application video — stockinette, webril padding, plaster application, and CMS check. Watch before your lab session.</div>
+      <div class="rc-link">youtube.com →</div>
+    </a>
+    <a class="resource-card" href="https://www.aaos.org/research/stats/patientstats.asp" target="_blank">
+      <div class="rc-type">📊 Data</div>
+      <div class="rc-title">AAOS — Bone & Fracture Statistics</div>
+      <div class="rc-desc">American Academy of Orthopaedic Surgeons data on fracture prevalence, osteoporosis impact, and orthopedic procedures. Contextualizes why these skills matter at scale.</div>
+      <div class="rc-link">aaos.org →</div>
+    </a>
+    <a class="resource-card" href="https://hosa.org/competitive-events/" target="_blank">
+      <div class="rc-type">🏆 HOSA Prep</div>
+      <div class="rc-title">HOSA — Sports Medicine Event</div>
+      <div class="rc-desc">Fracture identification, CMS assessment, and splinting are core HOSA Sports Medicine competitive skills. Review the event guidelines to see exactly how these are scored.</div>
+      <div class="rc-link">hosa.org →</div>
+    </a>
+    <a class="resource-card" href="https://www.bls.gov/ooh/healthcare/orthopedic-surgeons.htm" target="_blank">
+      <div class="rc-type">💼 Career</div>
+      <div class="rc-title">BLS — Orthopedic Surgeon Profile</div>
+      <div class="rc-desc">Education pathway, salary range, and job duties for orthopedic surgery. Includes subspecialties: pediatric ortho, sports medicine, trauma surgery.</div>
+      <div class="rc-link">bls.gov →</div>
+    </a>
+    <a class="resource-card" href="https://www.bls.gov/ooh/healthcare/radiologic-technologists.htm" target="_blank">
+      <div class="rc-type">💼 Career</div>
+      <div class="rc-title">BLS — Radiology Technologist Profile</div>
+      <div class="rc-desc">Radiologic techs take the X-rays you're learning to interpret. Strong job growth projected. 2-year associate's degree pathway — accessible to AoHS graduates.</div>
+      <div class="rc-link">bls.gov →</div>
+    </a>
+    <a class="resource-card" href="https://www.niams.nih.gov/health-topics/osteoporosis" target="_blank">
+      <div class="rc-type">🔬 Research</div>
+      <div class="rc-title">NIH NIAMS — Osteoporosis</div>
+      <div class="rc-desc">National Institute of Arthritis and Musculoskeletal Diseases. Deep dive into osteoporosis — DEXA scanning, T-scores, treatment, and prevention. Advanced reading for curious interns.</div>
+      <div class="rc-link">niams.nih.gov →</div>
+    </a>
+  </div>
+</div>
+
+<!-- APPLY IT -->
+<div id="apply" class="panel">
+  <div class="section-title">Apply It — Clinical Scenario</div>
+  <div class="section-sub">Read the orthopedic case. Use your Week 5 vocabulary to complete each clinical task.</div>
+  <div class="section-divider"></div>
+
+  <div class="scenario-card">
+    <div class="scenario-eyebrow">ER → Orthopedics Consult · Fracture Clinic</div>
+    <h2>Patient: Marcus Williams, 17M — Follow-Up Case</h2>
+    <p>Marcus returns to the ER three weeks after his burn injury. He was playing basketball when he landed awkwardly after a jump — he heard a pop and fell. He cannot bear weight on his right ankle. Assessment: significant swelling and ecchymosis over the lateral malleolus. Bony tenderness present on palpation at the distal fibula. X-ray ordered by the attending. Mechanism documented as: inversion injury, axial load on landing.</p>
+    <div class="vitals">
+      <div class="vital-box"><div class="vital-val">118/76</div><div class="vital-lbl">Blood Pressure</div></div>
+      <div class="vital-box"><div class="vital-val">92</div><div class="vital-lbl">Heart Rate</div></div>
+      <div class="vital-box"><div class="vital-val">16</div><div class="vital-lbl">Resp Rate</div></div>
+      <div class="vital-box"><div class="vital-val">98.6°F</div><div class="vital-lbl">Temperature</div></div>
+    </div>
+  </div>
+
+  <div class="task-card">
+    <div class="task-num">Task 1 · Pre-Splint CMS Assessment</div>
+    <div class="task-q">The attending orders a posterior splint before the X-ray results are back. Write the PRE-SPLINT CMS findings as they should appear in the Objective section of the SOAP note. Use clinical documentation format. Assume: cap refill 2s, toes wiggle but with discomfort, light touch intact bilaterally.</div>
+    <textarea class="task-textarea" placeholder="Pre-splint CMS: Circulation: ... Motion: ... Sensation: ..."></textarea>
+    <button class="task-hint-btn" onclick="toggleHint('h1')">💡 Show Hint</button>
+    <div id="h1" class="task-hint">Format: C = describe cap refill time + skin color/temp. M = state whether patient can actively move distal digits. S = describe light touch findings bilaterally. Each component should be one complete clinical sentence. Compare to the uninjured side where applicable.</div>
+  </div>
+
+  <div class="task-card">
+    <div class="task-num">Task 2 · Fracture Classification from X-Ray Description</div>
+    <div class="task-q">The radiology report comes back: "Oblique fracture line at the distal fibula with 2mm lateral displacement of the distal fragment. Cortex disrupted through full thickness. No involvement of the ankle joint space. Soft tissue swelling noted." Classify the fracture using the correct descriptor terms from your formulary. Explain each classification.</div>
+    <textarea class="task-textarea" placeholder="Fracture type (pattern): ... because the X-ray shows...&#10;Displaced or non-displaced: ... because...&#10;Open or closed: ... because...&#10;Intra-articular or extra-articular: ... because..."></textarea>
+    <button class="task-hint-btn" onclick="toggleHint('h2')">💡 Show Hint</button>
+    <div id="h2" class="task-hint">Oblique = diagonal fracture line (similar to spiral but without the helical wrap). Full thickness cortex = complete fracture. 2mm displacement = displaced (fragments have moved). Skin intact = closed. "No involvement of ankle joint space" = extra-articular. Use these four descriptors: pattern + displacement status + open/closed + articular involvement.</div>
+  </div>
+
+  <div class="task-card">
+    <div class="task-num">Task 3 · ORIF Decision</div>
+    <div class="task-q">The attending considers conservative management (casting) vs. ORIF. The fracture is displaced 2mm. Based on the ORIF indication criteria from your reading, would ORIF be indicated in this case? Justify your answer using clinical evidence from the scenario.</div>
+    <textarea class="task-textarea" placeholder="ORIF is / is not indicated because...&#10;Evidence from the case that supports this:...&#10;What would change the decision toward ORIF:..."></textarea>
+    <button class="task-hint-btn" onclick="toggleHint('h3')">💡 Show Hint</button>
+    <div id="h3" class="task-hint">ORIF thresholds: displacement &gt;2mm, intra-articular extension, open fracture, or failed conservative management. This fracture has exactly 2mm displacement — this is the threshold. The fracture is extra-articular and closed. The decision in borderline cases often depends on: patient age, activity level, and whether the fracture can be maintained in alignment with casting alone.</div>
+  </div>
+
+  <div class="task-card">
+    <div class="task-num">Task 4 · Post-Splint Documentation + SOAP Assessment</div>
+    <div class="task-q">After splinting, the post-splint CMS shows: cap refill 3s, toes pale and cool, patient reports tingling in the dorsum of the foot. Write: (1) the post-splint CMS documentation and (2) the immediate clinical response you would initiate and why.</div>
+    <textarea class="task-textarea" placeholder="Post-splint CMS: Circulation: ... Motion: ... Sensation: ...&#10;&#10;Clinical response: Immediately... because... (name the specific CMS components that are abnormal)" rows="6"></textarea>
+    <button class="task-hint-btn" onclick="toggleHint('h4')">💡 Show Hint</button>
+    <div id="h4" class="task-hint">Cap refill 3s = ABNORMAL (&gt;2s = compromised circulation). Pale/cool = abnormal color/temp = circulation impaired. Tingling in dorsum = paresthesia = sensation abnormal. 2 of 3 CMS components abnormal. Response: loosen/bivalve the splint IMMEDIATELY. This is a time-sensitive emergency — compartment syndrome is a risk.</div>
+  </div>
+</div>
+
+</main>
+
+<script>
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const order=['reading','cfu','vocab','resources','apply'];
+  document.querySelectorAll('.nav-btn')[order.indexOf(id)].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+const cfuData=[
+  {vignette:"An X-ray of a 9-year-old's forearm shows the cortex is disrupted on ONE SIDE ONLY. The bone has bent and cracked but has NOT broken all the way through.",
+   q:"What fracture type does this describe?",
+   choices:["A. Comminuted — bone shatters into 3+ fragments","B. Compression — bone crushed by axial load","C. Greenstick — incomplete, one-sided cortex disruption","D. Transverse — horizontal break perpendicular to bone axis"],
+   answer:2,
+   fb_right:"✓ Correct! Greenstick = incomplete break, bone bends, cortex disrupted ONE side only. Classic pediatric fracture — the flexible periosteum allows bones to bend before fully breaking.",
+   fb_wrong:"Greenstick = bone bends, cortex disrupted ONE side only. Classic PEDIATRIC fracture. Comminuted = 3+ fragments. Transverse = complete horizontal break. Compression = vertebra/bone crushed by axial load."
+  },
+  {vignette:"After applying a posterior splint to an ankle fracture, the nurse checks CMS. Toes are PALE AND COOL. Capillary refill is 4 SECONDS. Patient reports NUMBNESS in the foot.",
+   q:"What is the MOST appropriate immediate response?",
+   choices:["A. Continue monitoring — normal findings post-splinting","B. Apply more padding — the splint may be too loose","C. Loosen or bivalve the splint immediately — Circulation AND Sensation are compromised","D. Only Sensation is abnormal — document and reassess in 30 minutes"],
+   answer:2,
+   fb_right:"✓ Correct! Pale/cool + 4s cap refill = impaired Circulation. Numbness = impaired Sensation. Two of three CMS components abnormal = loosen/bivalve splint immediately. This is a time-sensitive emergency.",
+   fb_wrong:"Normal cap refill = &lt;2 seconds. 4 seconds = impaired. Pale/cool = circulation compromised. Numbness = sensation impaired. Two CMS components abnormal = immediate action: loosen or bivalve the splint. Delay risks compartment syndrome."
+  },
+  {vignette:"A construction worker sustains a high-velocity tibial injury. The bone has broken through the skin. IV antibiotics are ordered immediately.",
+   q:"Why are IV antibiotics specifically indicated for THIS fracture type?",
+   choices:["A. All fractures require prophylactic antibiotics","B. Skin integrity is breached — direct bacterial pathway to bone = high infection risk","C. The patient has pre-existing osteoporosis","D. The fracture involves the intra-articular space"],
+   answer:1,
+   fb_right:"✓ Correct! Open (compound) fracture = skin broken = bacteria can reach bone directly. Risk of osteomyelitis (oste/o + myel/o + -itis = bone marrow infection). IV abx is standard of care.",
+   fb_wrong:"Open fracture = skin barrier is breached. Bacteria can enter directly and infect bone, causing osteomyelitis (bone marrow infection). This is the SPECIFIC reason for emergent IV antibiotics — not about osteoporosis or joint involvement."
+  },
+  {vignette:"An orthopedic report reads: 'cortical disruption visible at the diaphysis — closed fracture confirmed.' The intern must explain 'cortic/o' to a patient.",
+   q:"The combining form cortic/o in 'cortical bone' means:",
+   choices:["A. Middle layer or marrow cavity","B. Joint surface or articular region","C. Outer layer or cortex — the dense shell","D. Around or surrounding — like periosteum"],
+   answer:2,
+   fb_right:"✓ Correct! cortic/o = outer layer/cortex. Cortical bone = the dense outer shell that provides structural strength. When it's disrupted = fracture confirmed.",
+   fb_wrong:"cortic/o = outer layer (cortex). medull/o = marrow/middle. arthr/o = joint. peri- = around/surrounding. Cortical bone = the dense outer shell of bone (as opposed to spongy/cancellous inner bone)."
+  },
+  {vignette:"During a CMS check on a patient with a tibial splint, the patient CANNOT WIGGLE their toes on the affected side. Capillary refill is 1.5 seconds. Light touch sensation is intact.",
+   q:"Which CMS component is specifically compromised?",
+   choices:["A. Circulation only — cap refill is the concern","B. Motion only — distal digit movement is absent","C. Sensation only — light touch is abnormal","D. All three components are compromised"],
+   answer:1,
+   fb_right:"✓ Correct! Circulation: 1.5s cap refill = NORMAL (&lt;2s). Sensation: light touch intact = NORMAL. Only Motion is impaired. This may indicate tendon or nerve injury distal to the fracture site.",
+   fb_wrong:"Circulation: 1.5s = NORMAL (need &lt;2s). Sensation: light touch intact = NORMAL. Only MOTION is abnormal — the patient cannot actively move their toes. This isolated finding suggests possible tendon or nerve involvement, not global compromise."
+  }
+];
+
+let cfuScores={correct:0,total:0};
+function buildCFU(){
+  const container=document.getElementById('cfuContainer');
+  cfuData.forEach((q,qi)=>{
+    const div=document.createElement('div');div.className='cfu-block';div.id=`cfu_${qi}`;
+    const choicesHtml=q.choices.map((ch,ci)=>`<button class="cfu-choice" data-qi="${qi}" data-ci="${ci}" onclick="answerCFU(${qi},${ci})">${ch}</button>`).join('');
+    div.innerHTML=`<div class="cfu-label">Question ${qi+1} of 5 · Week 5 — Skeletal</div><div style="background:var(--primary-l);border-left:3px solid var(--primary);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:14px;font-size:0.875rem;color:var(--gray);font-style:italic;line-height:1.6">${q.vignette}</div><div class="cfu-question">${q.q}</div><div class="cfu-choices">${choicesHtml}</div><div class="cfu-feedback" id="cfufb_${qi}"></div><button class="cfu-retry" id="cfuretry_${qi}" style="display:none" onclick="retryCFU(${qi})">↺ Try Again</button>`;
+    container.appendChild(div);
+  });
+}
+function answerCFU(qi,ci){
+  const q=cfuData[qi],isRight=ci===q.answer;
+  document.querySelectorAll(`[data-qi="${qi}"]`).forEach((btn,i)=>{btn.disabled=true;if(i===q.answer)btn.classList.add('correct');else if(i===ci&&!isRight)btn.classList.add('wrong');else btn.classList.add('dimmed');});
+  const fb=document.getElementById(`cfufb_${qi}`);fb.className='cfu-feedback show '+(isRight?'ok':'no');
+  fb.innerHTML=isRight?`<strong>✓ Correct!</strong> ${q.fb_right}`:`<strong>✗ Not quite.</strong> ${q.fb_wrong}`;
+  document.getElementById(`cfuretry_${qi}`).style.display='inline-block';
+  cfuScores.total++;if(isRight)cfuScores.correct++;updateCFUScore();
+}
+function retryCFU(qi){document.querySelectorAll(`[data-qi="${qi}"]`).forEach(btn=>{btn.disabled=false;btn.className='cfu-choice';});document.getElementById(`cfufb_${qi}`).className='cfu-feedback';document.getElementById(`cfuretry_${qi}`).style.display='none';}
+function resetAllCFU(){cfuScores={correct:0,total:0};cfuData.forEach((_,qi)=>retryCFU(qi));updateCFUScore();}
+function updateCFUScore(){document.getElementById('cfuScore').textContent=`${cfuScores.correct} / ${cfuScores.total}`;document.getElementById('cfuAcc').textContent=cfuScores.total>0?Math.round(cfuScores.correct/cfuScores.total*100)+'%':'—';}
+
+const matchPairs=[
+  {term:'periosteum',def:'Tough membrane wrapping outer bone surface — contains blood supply and osteoblasts'},
+  {term:'cortical bone',def:'Dense outer shell of bone providing structural strength'},
+  {term:'medullary canal',def:'Central hollow cavity through the shaft — contains bone marrow'},
+  {term:'epiphysis',def:'Rounded end of a long bone — covered with articular cartilage'},
+  {term:'diaphysis',def:'The shaft — the long middle portion of a long bone'},
+  {term:'greenstick fracture',def:'Incomplete break — bone bends, cortex disrupted one side only — pediatric'},
+  {term:'comminuted fracture',def:'Bone shatters into 3 or more fragments — high-energy mechanism'},
+  {term:'compound fracture',def:'Open fracture — bone breaks through skin — orthopedic emergency'},
+  {term:'compression fracture',def:'Bone crushed by axial load — vertebra appears wedge-shaped on X-ray'},
+  {term:'ORIF',def:'Open Reduction Internal Fixation — surgery to align bone and secure with hardware'},
+  {term:'crepitus',def:'Grating sensation of bone ends rubbing — assess once, document, immobilize'},
+  {term:'osteomyelitis',def:'Bacterial infection of bone and bone marrow — complication of open fractures'},
+  {term:'osteoporosis',def:'Decreased bone density — DEXA T-score below -2.5 — high fracture risk'},
+  {term:'FOOSH',def:'Fall On Outstretched Hand — most common fracture mechanism in the ER'},
+  {term:'intra-articular',def:'Fracture line extends into the joint space — higher complication risk'},
+];
+const fillBlanks=[
+  {sentence:'A fracture where the bone cortex is disrupted on ONE side only and the bone is bent but not fully broken is called a ___ fracture.', answer:'greenstick', alt:['greenstick'], hint:'Classic in pediatric patients'},
+  {sentence:'The combining form cortic/o means ___, as in the hard outer shell of bone.', answer:'outer layer', alt:['outer layer','cortex','outer'], hint:'Think of the cerebral cortex — the outer layer of the brain'},
+  {sentence:'A ___ is a surgical procedure that realigns fractured bone and secures it with plates, screws, or rods.', answer:'ORIF', alt:['orif','open reduction','open reduction internal fixation'], hint:'Abbreviation: O___ R___ I___ F___'},
+  {sentence:'Before and after applying a splint, the nurse performs a ___ assessment to check Circulation, Motion, and Sensation.', answer:'CMS', alt:['cms','cms assessment'], hint:'Three letters, three components'},
+  {sentence:'A fall on outstretched hand — documented as ___ — is the most common fracture mechanism in the ER.', answer:'FOOSH', alt:['foosh'], hint:'Another abbreviation: F___ O___ O___ S___ H___'},
+  {sentence:'Bacterial infection of bone and bone marrow — a serious complication of open fractures — is called ___.', answer:'osteomyelitis', alt:['osteomyelitis'], hint:'oste/o (bone) + myel/o (marrow) + -itis (inflammation)'},
+];
+const decodeTerms=[
+  {term:'periosteum',parts:[{text:'peri-',type:'dp-prefix',meaning:'around/surrounding'},{text:'oste/o',type:'dp-root',meaning:'bone'},{text:'-um',type:'dp-suffix',meaning:'structure'}],full:'The fibrous membrane surrounding the outer surface of bone. Contains the blood supply and osteoblasts needed for fracture repair.'},
+  {term:'osteoporosis',parts:[{text:'oste/o',type:'dp-root',meaning:'bone'},{text:'por/o',type:'dp-root',meaning:'pore/opening'},{text:'-osis',type:'dp-suffix',meaning:'condition'}],full:'Condition of porous, decreased-density bone. T-score below -2.5 on DEXA scan. High risk for fractures from minimal trauma.'},
+  {term:'arthroscopy',parts:[{text:'arthr/o',type:'dp-root',meaning:'joint'},{text:'-scopy',type:'dp-suffix',meaning:'visual examination'}],full:'Minimally invasive procedure using a camera to visualize inside a joint. Used for diagnosis and repair of meniscal tears, rotator cuff injuries, and cartilage defects.'},
+  {term:'osteomyelitis',parts:[{text:'oste/o',type:'dp-root',meaning:'bone'},{text:'myel/o',type:'dp-root',meaning:'marrow'},{text:'-itis',type:'dp-suffix',meaning:'inflammation'}],full:'Bacterial infection of bone and bone marrow. Serious complication of open fractures. Requires prolonged IV antibiotics and possibly surgical debridement.'},
+  {term:'intra-articular',parts:[{text:'intra-',type:'dp-prefix',meaning:'within'},{text:'articular',type:'dp-root',meaning:'pertaining to a joint'}],full:'Within the joint space. Intra-articular fractures carry higher complication risk because articular cartilage is involved — increases risk of post-traumatic arthritis.'},
+  {term:'cortical',parts:[{text:'cortic/o',type:'dp-root',meaning:'outer layer/cortex'},{text:'-al',type:'dp-suffix',meaning:'pertaining to'}],full:'Pertaining to the outer layer. Cortical bone = the dense outer shell. Cortical disruption on X-ray = fracture is present. Also: cerebral cortex = outer brain layer.'},
+];
+
+let selectedTerm=null,selectedDef=null,matched=0,currentMatchPairs=[];
+function initMatch(){
+  matched=0;document.getElementById('matchCount').textContent='0';selectedTerm=null;selectedDef=null;
+  const shuffled=[...matchPairs].sort(()=>Math.random()-.5).slice(0,8);currentMatchPairs=shuffled;
+  const defShuffled=[...shuffled].sort(()=>Math.random()-.5);
+  document.getElementById('matchTerms').innerHTML='';document.getElementById('matchDefs').innerHTML='';
+  shuffled.forEach((p,i)=>{const t=document.createElement('div');t.className='match-item';t.textContent=p.term;t.dataset.idx=i;t.onclick=()=>selectMatchTerm(t,i);document.getElementById('matchTerms').appendChild(t);});
+  defShuffled.forEach(p=>{const idx=shuffled.findIndex(x=>x.term===p.term);const d=document.createElement('div');d.className='match-item';d.textContent=p.def;d.dataset.idx=idx;d.onclick=()=>selectMatchDef(d,idx);document.getElementById('matchDefs').appendChild(d);});
+}
+function selectMatchTerm(el,idx){if(el.classList.contains('matched'))return;document.querySelectorAll('#matchTerms .match-item:not(.matched)').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');selectedTerm={el,idx};checkMatch();}
+function selectMatchDef(el,idx){if(el.classList.contains('matched'))return;document.querySelectorAll('#matchDefs .match-item:not(.matched)').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');selectedDef={el,idx};checkMatch();}
+function checkMatch(){
+  if(!selectedTerm||!selectedDef)return;
+  if(selectedTerm.idx===selectedDef.idx){selectedTerm.el.classList.remove('selected');selectedTerm.el.classList.add('matched');selectedDef.el.classList.remove('selected');selectedDef.el.classList.add('matched');matched++;document.getElementById('matchCount').textContent=matched;selectedTerm=null;selectedDef=null;if(matched===8)setTimeout(()=>alert('🎉 All 8 matched! Click "New Round" for a fresh set.'),200);}
+  else{selectedTerm.el.classList.add('wrong-flash');selectedDef.el.classList.add('wrong-flash');setTimeout(()=>{[selectedTerm.el,selectedDef.el].forEach(el=>{el.classList.remove('wrong-flash','selected');});selectedTerm=null;selectedDef=null;},600);}
+}
+function buildFill(){
+  const container=document.getElementById('fillItems');
+  fillBlanks.forEach((item,i)=>{const div=document.createElement('div');div.className='fill-item';div.innerHTML=`<div class="fill-sentence">${item.sentence}</div><input class="fill-input" id="fill_${i}" placeholder="type your answer..." autocomplete="off"><button class="fill-check" onclick="checkFill(${i})">Check</button><div class="fill-hint">${item.hint}</div><div id="fillfb_${i}" style="font-size:0.82rem;margin-top:8px;display:none;"></div>`;container.appendChild(div);});
+}
+function checkFill(i){const input=document.getElementById(`fill_${i}`);const val=input.value.trim().toLowerCase();const item=fillBlanks[i];const isRight=item.alt.map(a=>a.toLowerCase()).some(a=>val.includes(a));input.className='fill-input '+(isRight?'correct-in':'wrong-in');const fb=document.getElementById(`fillfb_${i}`);fb.style.display='block';fb.style.color=isRight?'var(--correct)':'var(--wrong)';fb.textContent=isRight?'✓ Correct!':'✗ Answer: '+item.answer;}
+function buildDecode(){
+  const container=document.getElementById('decodeItems');
+  decodeTerms.forEach((item,i)=>{const partsHtml=item.parts.map(pt=>`<span class="decode-part ${pt.type}" title="${pt.meaning}">${pt.text}</span>`).join(' + ');const div=document.createElement('div');div.className='decode-item';div.innerHTML=`<div class="decode-term">${item.term}</div><div class="decode-parts">${partsHtml}</div><button class="decode-reveal" onclick="revealDecode(${i})">Reveal Full Meaning</button><div id="dec_${i}" class="decode-answer">${item.full}</div>`;container.appendChild(div);});
+}
+function revealDecode(i){const el=document.getElementById(`dec_${i}`);el.classList.toggle('show');el.previousElementSibling.textContent=el.classList.contains('show')?'Hide Meaning':'Reveal Full Meaning';}
+function showGame(id){document.querySelectorAll('.game-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.game-tab').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active');}
+function toggleHint(id){document.getElementById(id).classList.toggle('show');}
+document.addEventListener('DOMContentLoaded',()=>{buildCFU();initMatch();buildFill();buildDecode();});
+</script>
+</body>
+</html>
